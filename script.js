@@ -3,6 +3,7 @@ window.addEventListener("load", () => {
   const buttonChange = document.getElementById("btn-change");
   const buttonClose = document.getElementById("btn-close");
   const buttonRead = document.getElementById("btn-read");
+  const buttonReset = document.getElementById("btn-reset");
   const divOverlay = document.getElementById("overlay");
   const inputImageCamera = document.getElementById("img-camera");
   const inputResult = document.getElementById("input-result");
@@ -19,10 +20,15 @@ window.addEventListener("load", () => {
 
   // event listeners
   buttonRead.addEventListener("click", () => {
+    buttonReset.click();
     showOverlay();
     start();
     // inputImageCamera.click();
     // tmpInputFile.click();
+  });
+  buttonReset.addEventListener("click", () => {
+    log("");
+    inputResult.value = "";
   });
 
   buttonBack.addEventListener("click", () => {
