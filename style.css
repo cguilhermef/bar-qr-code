@@ -105,9 +105,3 @@ body {
   flex-direction: column;
   justify-self: center;
 }
-
-@media (orientation: landscape) {
-  .overlay__video {
-    height: 100px;
-  }
-}
