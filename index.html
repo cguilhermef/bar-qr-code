@@ -9,29 +9,38 @@
   </head>
   <body>
     <main>
-      <div class="overlay" id="overlay">
-        <button type="button" class="overlay__close" id="btn-close">X</button>
+      <div class="bqc-overlay" id="bqc-overlay">
+        <button type="button" class="bqc-overlay__close" id="bqc-btn-close"
+          >X</button
+        >
         <video
           width="100%"
           height="100%"
           id="video"
-          class="overlay__video"
+          class="bqc-overlay__video"
         ></video>
-        <div class="overlay-buttons">
-          <button type="button" class="overlay-buttons__button" id="btn-back"
+        <div class="bqc-overlay__actions">
+          <button type="button" class="bqc-overlay__button" id="bqc-btn-back"
             >Voltar</button
           >
-          <button type="button" class="overlay-buttons__button" id="btn-change"
+          <button type="button" class="bqc-overlay__button" id="bqc-btn-change"
             >Trocar</button
           >
         </div>
       </div>
       <div class="output">
-        <input type="text" id="input-result" readonly class="input-text" />
+        <input
+          type="text"
+          id="bqc-input-result"
+          readonly
+          class="input-text js-bqc-result-output"
+        />
         <div class="buttons">
-          <button type="button" id="btn-read" class="button">Ler QRCode</button>
-          <button type="button" id="btn-reset" class="button button--light"
-            >Reiniciar</button
+          <button
+            type="button"
+            id="bqc-btn-read"
+            class="button js-bqc-button-read"
+            >Ler QRCode</button
           >
         </div>
       </div>
