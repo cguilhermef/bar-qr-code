@@ -1,7 +1,5 @@
 window.addEventListener("load", () => {
   (function () {
-    const inputResult = document.querySelector(".js-bqc-result-output");
-
     let codeReader = null;
     let selectedDevice = 0;
     let selectedDeviceId = null;
@@ -32,6 +30,8 @@ window.addEventListener("load", () => {
     };
     const hideOverlay = () => {
       codeReader.reset();
+      codeReader.stopContinuousDecode();
+      codeReader = null;
       $("#bqc-overlay").css("display", "none");
     };
 
@@ -58,7 +58,6 @@ window.addEventListener("load", () => {
           "video",
           (result, err) => {
             if (result) {
-              inputResult.value = result.text;
               setValueOnTarget(fieldTarget, result.text);
               hideOverlay();
             }
