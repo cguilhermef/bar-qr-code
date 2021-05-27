@@ -1,13 +1,6 @@
 window.addEventListener("load", () => {
   (function () {
-    const buttonBack = document.getElementById("bqc-btn-back");
-    const buttonChange = document.getElementById("bqc-btn-change");
-    const buttonClose = document.getElementById("bqc-btn-close");
-    const buttonRead = document.querySelector(".js-bqc-button-read");
-    const divOverlay = document.getElementById("bqc-overlay");
     const inputResult = document.querySelector(".js-bqc-result-output");
-
-    let tmpImage = null;
     let tmpInputFile = document.createElement("input");
     tmpInputFile.type = "file";
     tmpInputFile.accept = "image/*";
@@ -18,59 +11,39 @@ window.addEventListener("load", () => {
     let selectedDeviceId = null;
 
     // event listeners
-    buttonRead.addEventListener("click", () => {
+    $(document).on("click", ".js-bqc-button-read", (el) => {
       showOverlay();
-      start();
+      start($(el.target).data("target-pkItem"));
     });
 
-    buttonBack.addEventListener("click", () => {
+    $(document).on("click", "#bqc-btn-back", () => {
       hideOverlay();
     });
 
-    buttonChange.addEventListener("click", () => {
+    $(document).on("click", "#bqc-btn-change", () => {
       selectedDevice = selectedDevice === 1 ? 0 : 1;
       codeReader.reset();
       start();
     });
 
-    buttonClose.addEventListener("click", () => {
+    $(document).on("click", "#bqc-btn-close", () => {
       hideOverlay();
     });
 
-    tmpInputFile.onchange = (event) => {
-      // log("change no input");
-      tmpImage = new Image();
-      tmpImage.src = URL.createObjectURL(event.target.files[0]);
-      fromImage();
-    };
-
     // methods
     const showOverlay = () => {
-      divOverlay.style.display = "flex";
+      $("#bqc-overlay").css("display", "flex");
     };
     const hideOverlay = () => {
       codeReader.reset();
-      divOverlay.style.display = "none";
+      $("#bqc-overlay").css("display", "none");
     };
 
-    const fromImage = () => {
-      codeReader = new ZXing.BrowserMultiFormatReader();
-      // log("iniciado o reader");
-      codeReader
-        .decodeFromImage(tmpImage)
-        .then((result) => {
-          // log("pronto");
-          // console.log(result);
-          inputResult.value = result.text;
-        })
-        .catch((err) => {
-          // log("erro");
-          // console.error(err);
-          inputResult.value = err;
-        });
+    const setValueOnTarget = (target, val) => {
+      $(`input[data-pkItem="${target}"]`).val(val);
     };
 
-    const start = () => {
+    const start = (fieldTarget) => {
       if (codeReader) {
         codeReader.reset();
         codeReader = null;
@@ -84,15 +57,12 @@ window.addEventListener("load", () => {
           "video",
           (result, err) => {
             if (result) {
-              // console.log(result);
-              // log("sucesso", result);
               inputResult.value = result.text;
+              setValueOnTarget(fieldTarget, result.text);
               hideOverlay();
             }
             if (err && !(err instanceof ZXing.NotFoundException)) {
-              // console.error(err);
-              // log("error", err);
-              inputResult.value = err;
+              // inputResult.value = err;
               hideOverlay();
             }
           }

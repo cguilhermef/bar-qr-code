@@ -33,19 +33,25 @@
           type="text"
           id="bqc-input-result"
           readonly
+          data-pkItem="123"
           class="input-text js-bqc-result-output"
         />
         <div class="buttons">
           <button
             type="button"
-            id="bqc-btn-read"
             class="button js-bqc-button-read"
+            data-target-pkItem="123"
             >Ler QRCode</button
           >
         </div>
       </div>
     </main>
     <pre id="log" style="font-family: monospace"></pre>
+    <script
+      src="https://code.jquery.com/jquery-1.11.3.min.js"
+      integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://unpkg.com/@zxing/library@0.18.5/umd/index.js"></script>
     <script src="script.js?v1.0.0"></script>
   </body>
