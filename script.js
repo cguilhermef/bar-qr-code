@@ -1,10 +1,6 @@
 window.addEventListener("load", () => {
   (function () {
     const inputResult = document.querySelector(".js-bqc-result-output");
-    let tmpInputFile = document.createElement("input");
-    tmpInputFile.type = "file";
-    tmpInputFile.accept = "image/*";
-    tmpInputFile.capture = "camera";
 
     let codeReader = null;
     let selectedDevice = 0;
@@ -62,16 +58,11 @@ window.addEventListener("load", () => {
               hideOverlay();
             }
             if (err && !(err instanceof ZXing.NotFoundException)) {
-              // inputResult.value = err;
               hideOverlay();
             }
           }
         );
       });
     };
-
-    // const log = (msg) => {
-    //   document.getElementById("log").textContent = msg;
-    // };
   })();
 });
