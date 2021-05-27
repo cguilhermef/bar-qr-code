@@ -48,6 +48,11 @@ window.addEventListener("load", () => {
       codeReader.listVideoInputDevices().then((videoInputDevices) => {
         selectedDeviceId = videoInputDevices[selectedDevice].deviceId;
 
+        if (videoInputDevices.length > 1) {
+          $("#bqc-btn-change").show();
+        } else {
+          $("#bqc-btn-change").hide();
+        }
         codeReader.decodeFromVideoDevice(
           selectedDeviceId,
           "video",
