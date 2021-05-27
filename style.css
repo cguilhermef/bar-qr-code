@@ -22,10 +22,10 @@ body {
   bottom: 0;
   display: none;
   left: 0;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
-  z-index: 1;
+  z-index: 10;
 }
 .bqc-overlay__video {
   background-color: rgba(0, 0, 0, 0.87);
