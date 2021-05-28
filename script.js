@@ -53,7 +53,6 @@ window.addEventListener("load", () => {
     // event listeners
     $(document).on("click", ".js-bqc-button-read", function () {
       currentFieldTarget = $(this).attr("data-target-item");
-      console.log(currentFieldTarget);
       methods.showOverlay();
       methods.start(currentFieldTarget);
     });
