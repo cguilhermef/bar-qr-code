@@ -3,11 +3,13 @@ window.addEventListener("load", () => {
     let codeReader = null;
     let selectedDevice = 0;
     let selectedDeviceId = null;
+    let currentFieldTarget = null;
 
     // event listeners
     $(document).on("click", ".js-bqc-button-read", (el) => {
+      currentFieldTarget = $(el.target).attr("data-target-item");
       showOverlay();
-      start($(el.target).data("target-pkItem"));
+      start(currentFieldTarget);
     });
 
     $(document).on("click", "#bqc-btn-back", () => {
@@ -17,7 +19,7 @@ window.addEventListener("load", () => {
     $(document).on("click", "#bqc-btn-change", () => {
       selectedDevice = selectedDevice === 1 ? 0 : 1;
       codeReader.reset();
-      start();
+      start(currentFieldTarget);
     });
 
     $(document).on("click", "#bqc-btn-close", () => {
@@ -32,11 +34,12 @@ window.addEventListener("load", () => {
       codeReader.reset();
       codeReader.stopContinuousDecode();
       codeReader = null;
+      currentFieldTarget = null;
       $("#bqc-overlay").css("display", "none");
     };
 
     const setValueOnTarget = (target, val) => {
-      $(`input[data-pkItem="${target}"]`).val(val);
+      $(`input[data-pkitem="${target}"]`).val(val);
     };
 
     const start = (fieldTarget) => {

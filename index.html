@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css?v1.0.0" />
+    <link rel="stylesheet" href="style.css?v1.2.0" />
   </head>
   <body>
+    HAA
     <main>
       <div class="bqc-overlay" id="bqc-overlay">
         <button type="button" class="bqc-overlay__close" id="bqc-btn-close"
@@ -28,34 +29,32 @@
           >
         </div>
       </div>
-      <div class="output">
+      <div class="output" id="item-123">
         <input
           type="text"
-          readonly
-          data-pkItem="123"
+          data-pkitem="123"
           class="input-text js-bqc-result-output"
         />
         <div class="buttons">
           <button
             type="button"
             class="button js-bqc-button-read"
-            data-target-pkItem="123"
+            data-target-item="123"
             >Ler QRCode</button
           >
         </div>
       </div>
-      <div class="output">
+      <div class="output" id="item-456">
         <input
           type="text"
-          readonly
-          data-pkItem="456"
+          data-pkitem="456"
           class="input-text js-bqc-result-output"
         />
         <div class="buttons">
           <button
             type="button"
             class="button js-bqc-button-read"
-            data-target-pkItem="456"
+            data-target-item="456"
             >Ler QRCode</button
           >
         </div>
@@ -68,6 +67,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://unpkg.com/@zxing/library@0.18.5/umd/index.js"></script>
-    <script src="script.js?v1.0.0"></script>
+    <script src="script.js?v1.4.0"></script>
   </body>
 </html>
