@@ -110,3 +110,9 @@ body {
   flex-direction: column;
   justify-self: center;
 }
+
+.like-a-block {
+  display: block;
+  min-height: 30px;
+  min-width: 100px;
+}
